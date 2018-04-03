@@ -1,0 +1,31 @@
+package com.viewfunction.activitySpaceEventListeners;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.viewfunction.activityEngine.extension.ActivityEventType;
+import com.viewfunction.activityEngine.extension.ActivitySpaceEventListenerInstance;
+import com.viewfunction.activityEngine.extension.SpaceEventListenersLoader;
+
+public class ServiceApplicationSpaceEventListenersLoader implements SpaceEventListenersLoader{
+
+	@Override
+	public List<ActivitySpaceEventListenerInstance> loadSpaceEventListeners() {
+		List<ActivitySpaceEventListenerInstance> listenerInstanceList=new ArrayList<ActivitySpaceEventListenerInstance>();
+		ActivitySpaceEventListenerInstance activitySpaceEventListenerInstance0=new ActivitySpaceEventListenerInstance();
+		AssigneeNotificationActivitySpaceEventListener assigneeNotificationActivitySpaceEventListener=new AssigneeNotificationActivitySpaceEventListener();
+		activitySpaceEventListenerInstance0.setActivitySpaceEventListener(assigneeNotificationActivitySpaceEventListener);
+		activitySpaceEventListenerInstance0.setEventType(ActivityEventType.ACTIVITYSTEP_ASSIGNED);
+		activitySpaceEventListenerInstance0.setListenerKey("ACTIVITYSTEP_ASSIGNED_LISTENER:assigneeNotification");
+		listenerInstanceList.add(activitySpaceEventListenerInstance0);
+		
+		ActivitySpaceEventListenerInstance activitySpaceEventListenerInstance1=new ActivitySpaceEventListenerInstance();
+		StarterNotificationActivitySpaceEventListener starterNotificationActivitySpaceEventListener=new StarterNotificationActivitySpaceEventListener();
+		activitySpaceEventListenerInstance1.setActivitySpaceEventListener(starterNotificationActivitySpaceEventListener);
+		activitySpaceEventListenerInstance1.setEventType(ActivityEventType.BUSINESSACTIVITY_COMPLETED);
+		activitySpaceEventListenerInstance1.setListenerKey("BUSINESSACTIVITY_COMPLETED_LISTENER:starterNotification");
+		listenerInstanceList.add(activitySpaceEventListenerInstance1);
+		
+		return listenerInstanceList;
+	}
+}
